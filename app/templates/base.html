@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}Carros{% endblock %}</title>
   <style>
     body {
         font-family: 'Open Sans', sans-serif;
@@ -72,8 +72,17 @@
   <header>
     <nav>
       <ul>
+        {% if user.is_authenticated %}
+          <li><span>Bem-vindo, {{ user.username }}!</span></li>
+          <li><a href="{% url 'new_car' %}">Adicionar Carro</a></li>
+        {% else %}
+          <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
         <li><a href="{% url 'cars_list' %}">Carros</a></li>
-        <li><a href="{% url 'new_car' %}">Adicionar Carro</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Sair</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
