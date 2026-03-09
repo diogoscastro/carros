@@ -4,96 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Carros{% endblock %}</title>
-  <style>
-    body {
-        font-family: 'Open Sans', sans-serif;
-        background-color: #f7f7f7;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
 
-    header {
-        background-color: #0096c7;
-        color: #fff;
-        text-align: center;
-    }
+  <!-- Fonte e Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    footer {
-        background-color: #ccc;
-        color: #333;
-        padding: 20px;
-        text-align: center;
-    }
+  <!-- CSS customizado -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    nav {
-        background-color: #0096c7;
-        color: #fff;
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 0 10px;
-    }
-
-    nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 16px;
-        padding: 15px;
-        transition: all 0.3s ease;
-    }
-
-    nav ul li a:hover {
-        background-color: #32bbe8;
-    }
-
-    nav ul li.active a {
-        background-color: #666;
-    }
-
-    nav ul li.active a:hover {
-        background-color: #999;
-    }
-
-  </style>
+  {% block extra_head %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   <header>
-    <nav>
-      <ul>
-        {% if user.is_authenticated %}
-          <li><span>Bem-vindo, {{ user.username }}!</span></li>
-          <li><a href="{% url 'new_car' %}">Adicionar Carro</a></li>
-        {% else %}
-          <li><a href="{% url 'register' %}">Cadastre-se</a></li>
-          <li><a href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-        <li><a href="{% url 'cars_list' %}">Carros</a></li>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Sair</a></li>
-        {% endif %}
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{% url 'cars_list' %}">
+          🚗 Castro Multimarcas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <span class="nav-link">Bem-vindo, {{ user.username }}!</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'new_car' %}">Adicionar Carro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Cadastre-se</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'cars_list' %}">Carros</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <main>
+  <main class="container py-4 flex-grow-1">
     {% block content %}
     {% endblock %}
   </main>
 
-  <footer>
-    <p>&copy; 2023 PycodeBR Multimarcas</p>
-  </footer>
+<footer class="bg-light border-top mt-auto py-3">
+  <div class="container text-center">
+    <small class="text-muted">
+      © 2026 Castro Multimarcas • Todos os direitos reservados
+    </small>
+  </div>
+</footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
 </body>
 </html>
