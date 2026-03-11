@@ -11,17 +11,48 @@
     <button type="submit">Buscar</button>
   </form>
 
-  <div class="car-grid">
+  <div class="row g-4">
+
     {% if cars %}
       {% for car in cars %}
-        <div class="car-card">
-          <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
-          <h2>{{ car.brand }} {{ car.model }}</h2>
-          <p>{{ car.factory_year }} - R$ {{ car.value }}</p>
+
+        <div class="col-md-4 col-sm-6 d-flex">
+
+          <a href="{% url 'car_detail' car.id %}" class="text-decoration-none text-dark">
+
+            <div class="card h-100 shadow-sm">
+
+                <img src="{{ car.photo.url }}" 
+                    class="card-img-top" 
+                    alt="{{ car.model }} - {{ car.brand }}">
+
+              <div class="card-body text-center">
+
+                <h5 class="card-title">
+                  {{ car.brand }} {{ car.model }}
+                </h5>
+
+                <p class="text-muted mb-1">
+                  Ano {{ car.factory_year }}
+                </p>
+
+                <p class="fw-bold text-primary fs-5">
+                  R$ {{ car.value }}
+                </p>
+
+              </div>
+
+            </div>
+
+          </a>
+
         </div>
+
       {% endfor %}
+
     {% else %}
-      <p class="no-results">Nenhum carro encontrado.</p>
+      <p class="text-center">Nenhum carro encontrado.</p>
     {% endif %}
+
   </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from cars.models import Car
 from cars.forms import CarModelForm
   
@@ -23,3 +23,8 @@ class NewCarCreateView(CreateView):
     form_class = CarModelForm
     template_name = 'new_car.html'
     success_url = reverse_lazy('cars_list')
+
+class CarDetailView(DetailView):
+    model = Car
+    template_name = 'car_detail.html'
+    context_object_name = 'car'
