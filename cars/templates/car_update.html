@@ -64,9 +64,12 @@
 
     .buttons-container {
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       margin-top: 20px;
       margin-bottom: 20px;
+      gap: 8px;
     }
 
     .btn {
@@ -115,6 +118,7 @@
     <div>
       <div class="buttons-container">
         <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+        <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Remover Carro</a>
         <a href="{% url 'cars_list' %}" class="btn btn-secondary">Cancelar</a>
       </div>
     </div>
