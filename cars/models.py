@@ -17,5 +17,16 @@ class Car(models.Model):
     value = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='cars/', blank=True, null=True)
 
-    def __str__(self):
+    def __str__(self): # Método para retornar uma representação legível do objeto Car
         return f"{self.brand} {self.model} ({self.model_year})"
+    
+class CarInventory(models.Model):
+    cars_count = models.IntegerField()
+    cars_value = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']  # Ordena por data de criação, do mais recente para o mais antigo
+
+    def __str__(self):
+        return f"{self.cars_count} carros - Valor Total: {self.cars_value}"
