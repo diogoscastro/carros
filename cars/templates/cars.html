@@ -21,11 +21,15 @@
           <a href="{% url 'car_detail' car.id %}" class="text-decoration-none text-dark">
 
             <div class="card h-100 shadow-sm">
-
+              {% if car.photo %}
                 <img src="{{ car.photo.url }}" 
                     class="card-img-top" 
                     alt="{{ car.model }} - {{ car.brand }}">
-
+              {% else %}
+                <img src="{% static 'images/image_not_found.jpg' %}"
+                    class="card-img-top" 
+                    alt="Carro sem foto">
+              {% endif %}
               <div class="card-body text-center">
 
                 <h5 class="card-title">
