@@ -16,6 +16,7 @@ class Car(models.Model):
     plate = models.CharField(max_length=20, blank=True, null=True)
     value = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='cars/', blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
 
     def __str__(self): # Método para retornar uma representação legível do objeto Car
         return f"{self.brand} {self.model} ({self.model_year})"
