@@ -1,0 +1,86 @@
+.car-card {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 520px;
+    margin: 30px auto;
+    transition: all 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* imagem */
+.card-img-top {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+/* conteúdo */
+.car-content {
+    padding: 20px;
+    text-align: left;
+}
+
+/* título */
+.car-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+/* preço (DESTAQUE PRINCIPAL) */
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0096c7;
+    margin-bottom: 15px;
+}
+
+/* infos */
+.car-info p {
+    margin: 4px 0;
+    color: #555;
+}
+
+/* descrição */
+.car-description {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    color: #444;
+}
+
+/* botões */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: #0096c7;
+}
+
+.btn-primary:hover {
+    background-color: #108eb8;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}

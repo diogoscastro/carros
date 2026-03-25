@@ -48,6 +48,8 @@ button[type="submit"]:hover {
     overflow: hidden;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     height: 100%;
+    width: 100%;
+    max-width: 320px; /* largura fixa padrão */
 }
 
 .card:hover {
@@ -63,10 +65,11 @@ button[type="submit"]:hover {
     height: 220px;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
 }
 
 .card:hover .card-img-top {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 
@@ -74,9 +77,30 @@ button[type="submit"]:hover {
 
 .card-title {
     font-weight: 600;
+    min-height: 48px;
 }
 
 .card-body p {
     margin-bottom: 5px;
     min-height: 110px;
+}
+
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 768px) {
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    form {
+        padding: 0 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
 }

@@ -1,0 +1,16 @@
+.login-container {
+    margin: 40px auto;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+
+/* ===== ERROS ===== */
+
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+}

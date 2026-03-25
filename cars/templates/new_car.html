@@ -1,44 +1,108 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <style>
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        margin-top: 30px;
-    }
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/new_car.css' %}">
 
-    input, textarea {
-        width: 300px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-  </style>
-
-  <h2 style="text-align:center;">Adicionar Novo Carro</h2>
+<div class="form-container">
   
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    
-    <button type="submit">Cadastrar</button>
+    <h1>Adicionar Novo Carro</h1>
+
+    {% if form.non_field_errors %}
+      <div class="error-message">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <!-- MARCA -->
+    <div class="form-group">
+      <label>Marca</label>
+      {{ form.brand }}
+      {% for error in form.brand.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- MODELO -->
+    <div class="form-group">
+      <label>Modelo</label>
+      {{ form.model }}
+      {% for error in form.model.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- ANO FABRICAÇÃO -->
+    <div class="form-group">
+      <label>Ano de fabricação</label>
+      {{ form.factory_year }}
+      {% for error in form.factory_year.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- ANO MODELO -->
+    <div class="form-group">
+      <label>Ano do modelo</label>
+      {{ form.model_year }}
+      {% for error in form.model_year.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- PLACA -->
+    <div class="form-group">
+      <label>Placa</label>
+      {{ form.plate }}
+      {% for error in form.plate.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- PREÇO -->
+    <div class="form-group">
+      <label>Preço</label>
+      {{ form.value }}
+      {% for error in form.value.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- FOTO -->
+    <div class="form-group">
+      <label>Foto</label>
+      {{ form.photo }}
+      {% for error in form.photo.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- DESCRIÇÃO -->
+    <div class="form-group">
+      <label>Descrição</label>
+      {{ form.bio }}
+      {% for error in form.bio.errors %}
+        <div class="error-message">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="buttons-container">
+      <button type="submit" class="btn btn-success">
+        <i class="bi bi-plus-circle me-2"></i>
+        Cadastrar
+      </button>
+
+      <a href="{% url 'cars_list' %}" class="btn btn-danger"><i class="bi bi-x-circle me-2"></i>
+        Cancelar
+      </a>
+    </div>
+
   </form>
+</div>
+
 {% endblock %}
