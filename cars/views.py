@@ -17,14 +17,14 @@ class CarsListView(ListView):
         brand = self.request.GET.get('brand')
         factory_year = self.request.GET.get('factory_year')
 
+        if search:
+            cars = cars.filter(model__icontains=search)
+        
         if brand:
             cars = cars.filter(brand__icontains=brand)
 
         if factory_year:
-            cars = cars.filter(factory_year=factory_year)
-
-        if search:
-            cars = cars.filter(model__icontains=search)
+            cars = cars.filter(factory_year=int(factory_year))
         return cars
 class CarDetailView(DetailView):
     model = Car
