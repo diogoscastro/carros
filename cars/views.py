@@ -12,8 +12,16 @@ class CarsListView(ListView):
     context_object_name = 'cars'
 
     def get_queryset(self):
-        cars = super().get_queryset().order_by('model', 'brand', 'factory_year', 'value' )
+        cars = super().get_queryset().order_by('model', 'brand', 'factory_year')
         search = self.request.GET.get('search')
+        brand = self.request.GET.get('brand')
+        factory_year = self.request.GET.get('factory_year')
+
+        if brand:
+            cars = cars.filter(brand__icontains=brand)
+
+        if factory_year:
+            cars = cars.filter(factory_year=factory_year)
 
         if search:
             cars = cars.filter(model__icontains=search)
