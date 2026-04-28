@@ -43,25 +43,69 @@ Sistema web desenvolvido com **Django** para gerenciamento e visualização de v
 
 ## 📂 Estrutura do projeto
 
-```
 carros/
+├── accounts/
+│   ├── migrations/
+│   ├── templates/
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   └── views.py
+│
 ├── app/
+│   ├── templates/
+│   │   └── base.html
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
 │
 ├── cars/
-│   ├── models.py
-│   ├── views.py
+│   ├── migrations/
+│   ├── static/
+│   │   ├── css/
+│   │   │   ├── car_delete.css
+│   │   │   ├── car_detail.css
+│   │   │   ├── car_update.css
+│   │   │   ├── cars.css
+│   │   │   └── new_car.css
+│   │   └── images/
+│   │       └── image_not_found.jpg
+│   │
 │   ├── templates/
-│   └── static/
+│   │   ├── car_delete.html
+│   │   ├── car_detail.html
+│   │   ├── car_update.html
+│   │   ├── cars.html
+│   │   └── new_car.html
+│   │
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── signals.py
+│   └── views.py
 │
 ├── static/
-├── media/
-├── venv/
+│   └── js/
+│       └── theme.js
+│
+├── .gitignore
+├── carros_uwsgi.ini
 ├── manage.py
-└── README.md
-```
+├── requirements.txt
+└── uwsgi_params
+
+---
+
+### 📌 Organização
+
+- `accounts/`: autenticação (login e cadastro)
+- `cars/`: lógica principal do sistema (CRUD de veículos)
+- `app/`: configuração global do projeto Django
+- `static/`: arquivos globais (ex: JavaScript do tema)
 
 ---
 
